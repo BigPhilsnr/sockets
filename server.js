@@ -4,7 +4,7 @@ const connectedUsers =[];
 
 
 app.get('/', (req, res) => {
-    res.send("Node Server is running. !!"+ JSON.stringify(connectedUsers))
+    res.send("Connected users"+ JSON.stringify(connectedUsers))
 })
 
 //Socket Logic
