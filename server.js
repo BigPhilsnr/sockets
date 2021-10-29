@@ -1,15 +1,17 @@
 const app = require('express')()
 const http = require('http').createServer(app)
+const connectedUsers =[];
 
 
 app.get('/', (req, res) => {
-    res.send("Node Server is running. Yay!!")
+    res.send("Node Server is running. !!"+ JSON.stringify(connectedUsers))
 })
 
 //Socket Logic
 const socketio = require('socket.io')(http)
 
 socketio.on("connection", (userSocket) => {
+    connectedUsers.push[userSocket]
     userSocket.emit("receive_message", {first_load:"socket io"})
     userSocket.on("send_message", (data) => {
         userSocket.broadcast.emit("receive_message", data)
